@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from .models import Book
 
 
@@ -11,11 +11,12 @@ def index(request):
   })
 
 def book_detail(request, id):
-  book = Book.objects.get(pk=id) # pk stands for primary key defined in our database. 
-  return render(request, "book_outlet/index.html", {
+  book = get_object_or_404(Book, pk=id)
+
+  return render(request, "book_outlet/book_detail.html", {
     "title": book.title,
     "author": book.author,
     "rating": book.rating,
-    "is_bestseller": book.is_bestseller
+    "is_bestselling": book.is_bestselling
   })
   
