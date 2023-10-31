@@ -11,4 +11,4 @@ class Book(models.Model):
   is_bestselling = models.BooleanField(default=False) #So by default the book is not the best selling one.
 
   def __str__(self):
-    return f"{self.title} ({self.rating}), Author: {self.author}"
+    return f"{self.title} ({self.rating}), Author: {self.author}, {self.is_bestselling}"
