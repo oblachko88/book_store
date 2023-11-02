@@ -13,8 +13,8 @@ class Book(models.Model):
   title = models.CharField(max_length=50)
   rating = models.IntegerField(
     validators=[MinValueValidator(1), MaxValueValidator(5)])
-  author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
-  is_bestselling = models.BooleanField(default=False) #So by default the book is not the best selling one.
+  author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True, related_name="books")
+  is_bestselling = models.BooleanField(default=False) # So by default the book is not the best selling one.
   slug = models.SlugField(default="", null=False, db_index=True)
 
   def get_absolute_url(self):
